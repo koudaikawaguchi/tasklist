@@ -54,9 +54,9 @@ class TasksController < ApplicationController
     private
 
   def set_task
-    @task = current_user.tasks.find_by(params[:user_id])
-    unless current_user.tasks
-      redirect_to '/'
+    @task = current_user.tasks.find_by(id: params[:id])
+    unless @task
+      redirect_to tasks_url
     end
   end
 
