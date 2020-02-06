@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :edit, :new]
+  before_action :require_user_logged_in
   
   def index
     #@tasks = Task.all.page(params[:page]).per(5)
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
     private
 
   def set_task
-    @task = current_user.tasks.find(params[:id])
+    @task = current_user.tasks.find_by(params[:id])
   end
 
   def task_params
